@@ -682,10 +682,7 @@ static void otg_charger_restart(void)
 {
 	int charge;
 	
-	if (!curr_otg_status)
-		return;
-  
-	charge = (otg_charger_type != CHARGER_TYPE_NONE);
+	charge = ((curr_otg_status && (otg_charger_type != CHARGER_TYPE_NONE)) ? 1 : 0);
 
 	batt_restart();
 
